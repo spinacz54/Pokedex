@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable, ReplaySubject} from "rxjs";
 import {Card, PokemonListItem, Subtypes, Supertypes, Types} from "../models/models";
 
@@ -61,7 +61,7 @@ export class StateService {
     this.isPokemonsListLoading$.next(isLoading);
   }
 
-  public getIsPokemonsListLoading(): Observable<boolean> {
+  public getIsPokemonsListLoading$(): Observable<boolean> {
     return this.isPokemonsListLoading$.asObservable();
   }
 
@@ -70,7 +70,7 @@ export class StateService {
     this.isPokemonLoading$.next(isLoading);
   }
 
-  public getIsPokemonLoading(): Observable<boolean> {
+  public getIsPokemonLoading$(): Observable<boolean> {
     return this.isPokemonLoading$.asObservable();
   }
 

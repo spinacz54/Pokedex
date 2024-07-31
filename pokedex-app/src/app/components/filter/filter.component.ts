@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {FilteringProperties, PokemonQuery} from "../../models/models";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FilteringProperties, PokemonQuery} from "../../models/models";
 
 @Component({
   selector: 'filter-component',
@@ -9,6 +9,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class FilterComponent {
   @Input() public selectOptions: string[] = Object.values(FilteringProperties);
+
   @Output() public filterClick: EventEmitter<PokemonQuery> = new EventEmitter();
   @Output() public clearClick: EventEmitter<any> = new EventEmitter();
 
@@ -33,5 +34,4 @@ export class FilterComponent {
       value: new FormControl('', [Validators.required, Validators.pattern('[a-zA-Z0-9]*')])
     })
   }
-
 }

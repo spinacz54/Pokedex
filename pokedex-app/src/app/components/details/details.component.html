@@ -1,61 +1,68 @@
-
-  <form class="details" [formGroup]="form" *ngIf="!(isPokemonLoading$ | async)">
-    <img [src]="pokemon?.images?.large" class="details__image" alt="image">
-    <mat-form-field id="nameField">
-      <mat-label>Name</mat-label>
-      <input matInput formControlName="name">
-    </mat-form-field>
-    <mat-form-field id="idField">
-      <mat-label>ID</mat-label>
-      <input matInput formControlName="id">
-    </mat-form-field>
-    <mat-form-field id="hpField">
-      <mat-label>HP</mat-label>
-      <input matInput formControlName="hp">
-    </mat-form-field>
-    <mat-form-field id="evolvesFromField">
-      <mat-label>Evolves from</mat-label>
-      <input matInput formControlName="evolvesFrom">
-    </mat-form-field>
-    <mat-form-field *ngIf="isInEditMode">
-      <mat-label>Types</mat-label>
-      <mat-select formControlName="types" [placeholder]="typesPlaceholder" multiple>
-        @for (option of types; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field *ngIf="isInEditMode">
-      <mat-label>Subtypes</mat-label>
-      <mat-select formControlName="subtypes" [placeholder]="typesPlaceholder" multiple>
-        @for (option of subtypes; track option) {
-          <mat-option [value]="option">{{option}}</mat-option>
-        }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field *ngIf="isInEditMode">
-      <mat-label>Supertype</mat-label>
-      <mat-select formControlName="supertype" [placeholder]="supertypePlaceholder">
-                @for (option of supertypes; track option) {
-                  <mat-option [value]="option">{{option}}</mat-option>
-                }
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field *ngIf="!isInEditMode" class="typesField">
-      <mat-label>Types</mat-label>
-      <input matInput formControlName="types">
-    </mat-form-field>
-    <mat-form-field *ngIf="!isInEditMode" class="subtypesField">
-      <mat-label>Subtypes</mat-label>
-      <input matInput formControlName="subtypes">
-    </mat-form-field>
-    <mat-form-field *ngIf="!isInEditMode" class="supertypeField">
-      <mat-label>Supertype</mat-label>
-      <input matInput formControlName="supertype">
-    </mat-form-field>
-    <div class="details__button details__button-back" (click)="onBackClick()"><button mat-stroked-button>Back</button></div>
-    <div class="details__button details__button-save" *ngIf="isInEditMode" (click)="onSaveClick()"><button  mat-flat-button>Save</button></div>
-    <div class="details__button details__button-save" *ngIf="!isInEditMode" (click)="onEditClick()"><button  mat-flat-button>Edit</button></div>
-  </form>
-  <div class="spinner" *ngIf="isPokemonLoading$ | async"><mat-spinner></mat-spinner></div>
+<form class="details__form" [formGroup]="form" *ngIf="!(isPokemonLoading$ | async)">
+  <img [src]="pokemon?.images?.large" class="details__form_image" alt="image">
+  <mat-form-field id="nameField">
+    <mat-label>Name</mat-label>
+    <input matInput formControlName="name">
+  </mat-form-field>
+  <mat-form-field id="idField">
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id">
+  </mat-form-field>
+  <mat-form-field id="hpField">
+    <mat-label>HP</mat-label>
+    <input matInput formControlName="hp">
+  </mat-form-field>
+  <mat-form-field id="evolvesFromField">
+    <mat-label>Evolves from</mat-label>
+    <input matInput formControlName="evolvesFrom">
+  </mat-form-field>
+  <mat-form-field *ngIf="isInEditMode">
+    <mat-label>Types</mat-label>
+    <mat-select formControlName="types" [placeholder]="typesPlaceholder" multiple>
+      @for (option of types; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="isInEditMode">
+    <mat-label>Subtypes</mat-label>
+    <mat-select formControlName="subtypes" [placeholder]="typesPlaceholder" multiple>
+      @for (option of subtypes; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="isInEditMode">
+    <mat-label>Supertype</mat-label>
+    <mat-select formControlName="supertype" [placeholder]="supertypePlaceholder">
+      @for (option of supertypes; track option) {
+        <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field *ngIf="!isInEditMode" class="details__form_typesField">
+    <mat-label>Types</mat-label>
+    <input matInput formControlName="types">
+  </mat-form-field>
+  <mat-form-field *ngIf="!isInEditMode" class="details__form_subtypesField">
+    <mat-label>Subtypes</mat-label>
+    <input matInput formControlName="subtypes">
+  </mat-form-field>
+  <mat-form-field *ngIf="!isInEditMode" class="details__form_supertypeField">
+    <mat-label>Supertype</mat-label>
+    <input matInput formControlName="supertype">
+  </mat-form-field>
+  <div class="details__form_button details__form_button-back" (click)="onBackClick()">
+    <button mat-stroked-button>Back</button>
+  </div>
+  <div class="details__form_button details__form_button-save" *ngIf="isInEditMode" (click)="onSaveClick()">
+    <button mat-flat-button>Save</button>
+  </div>
+  <div class="details__form_button details__form_button-save" *ngIf="!isInEditMode" (click)="onEditClick()">
+    <button mat-flat-button>Edit</button>
+  </div>
+</form>
+<div class="details__spinner" *ngIf="isPokemonLoading$ | async">
+  <mat-spinner></mat-spinner>
+</div>
 

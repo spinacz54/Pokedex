@@ -1,17 +1,17 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
+import {Observable, Subscription} from "rxjs";
 import {ActionFacadeService} from "../../facades/action-facade.service";
 import {ViewFacadeService} from "../../facades/view-facade.service";
 import {Card, Subtypes, Supertypes, Types} from "../../models/models";
-import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss'
 })
-export class DetailsComponent implements OnInit, OnDestroy{
+export class DetailsComponent implements OnInit, OnDestroy {
   public pokemon: Card;
   public isPokemonLoading$!: Observable<boolean>;
   public form: FormGroup;
@@ -23,12 +23,16 @@ export class DetailsComponent implements OnInit, OnDestroy{
   public supertypePlaceholder: string = '';
   private subscriptions: Subscription[] = [];
 
-  constructor(private route: ActivatedRoute, private router: Router, private actionFacadeService: ActionFacadeService, private viewFacadeService: ViewFacadeService) {
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private actionFacadeService: ActionFacadeService,
+    private viewFacadeService: ViewFacadeService) {
     this.form = this.createNewForm();
   }
 
   ngOnInit(): void {
-    const id: string | null= this.route.snapshot.paramMap.get('id');
+    const id: string | null = this.route.snapshot.paramMap.get('id');
     this.subscribeToData();
     id && this.loadData(id);
   }
@@ -46,7 +50,7 @@ export class DetailsComponent implements OnInit, OnDestroy{
   }
 
   private updateForm(pokemon?: Card): void {
-    if(!!pokemon) {
+    if (!!pokemon) {
       this.form.get('name')?.patchValue(pokemon.name);
       this.form.get('id')?.patchValue(pokemon.id);
       this.form.get('hp')?.patchValue(pokemon.hp);
@@ -65,11 +69,14 @@ export class DetailsComponent implements OnInit, OnDestroy{
       this.updateForm(pokemon)
     }));
     this.subscriptions.push(this.viewFacadeService.getTypes$().subscribe((types: Types) => {
-      this.types = types}));
+      this.types = types
+    }));
     this.subscriptions.push(this.viewFacadeService.getSubtypes$().subscribe((subtypes: Subtypes) => {
-      this.subtypes = subtypes}));
+      this.subtypes = subtypes
+    }));
     this.subscriptions.push(this.viewFacadeService.getSupertypes$().subscribe((supertypes: Supertypes) => {
-      this.supertypes = supertypes}));
+      this.supertypes = supertypes
+    }));
     this.isPokemonLoading$ = this.viewFacadeService.getIsPokemonLoading$();
 
   }

@@ -1,14 +1,15 @@
-import { Injectable } from '@angular/core';
-import {StateService} from "../services/state.service";
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {Card, PokemonListItem} from "../models/models";
+import {Card, PokemonListItem, Subtypes, Supertypes, Types} from "../models/models";
+import {StateService} from "../services/state.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewFacadeService {
 
-  constructor(private stateService: StateService) { }
+  constructor(private stateService: StateService) {
+  }
 
   public getPokemons$(): Observable<PokemonListItem[]> {
     return this.stateService.getPokemons$();
@@ -18,23 +19,23 @@ export class ViewFacadeService {
     return this.stateService.getPokemon$();
   }
 
-  public getTypes$(): Observable<string[] | undefined> {
+  public getTypes$(): Observable<Types> {
     return this.stateService.getTypes$();
   }
 
-  public getSubtypes$(): Observable<string[] | undefined> {
+  public getSubtypes$(): Observable<Subtypes> {
     return this.stateService.getSubtypes$();
   }
 
-  public getSupertypes$(): Observable<string[] | undefined> {
+  public getSupertypes$(): Observable<Supertypes> {
     return this.stateService.getSupertypes$();
   }
 
   public getIsPokemonsListLoading$(): Observable<boolean> {
-    return this.stateService.getIsPokemonsListLoading();
+    return this.stateService.getIsPokemonsListLoading$();
   }
 
   public getIsPokemonLoading$(): Observable<boolean> {
-    return this.stateService.getIsPokemonLoading();
+    return this.stateService.getIsPokemonLoading$();
   }
 }

@@ -39,7 +39,7 @@ export type Types = string[] | undefined
 export type Subtypes = string[] | undefined
 export type Supertypes = string[] | undefined
 
-export enum FilteringProperties{
+export enum FilteringProperties {
   TYPE = 'Type',
   SUBTYPE = 'Subtype',
   SUPERTYPE = 'Supertype'

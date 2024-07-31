@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {Observable} from "rxjs";
 import {AllCardsResponse, PokemonQuery, SimpleTypes, SingleCardResponse} from "../models/models";
 
 @Injectable({
@@ -10,7 +10,8 @@ export class DataProviderService {
 
   private apiUrl = 'https://api.pokemontcg.io/v2/';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   public getPokemons$(query?: PokemonQuery): Observable<AllCardsResponse> {
     return this.http.get<any>(this.apiUrl + 'cards' + this.parseQuery(query));
