@@ -1,6 +1,6 @@
 
   <form class="details" [formGroup]="form">
-    <img [src]="pokemon?.images?.large" class="details__image">
+    <img [src]="pokemon?.images?.large" class="details__image" alt="image">
     <mat-form-field id="nameField">
       <mat-label>Name</mat-label>
       <input matInput formControlName="name">

@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ActionFacadeService} from "../../facades/action-facade.service";
 import {ViewFacadeService} from "../../facades/view-facade.service";
