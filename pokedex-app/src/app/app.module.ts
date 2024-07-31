@@ -1,6 +1,6 @@
 import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {ReactiveFormsModule} from "@angular/forms";
 import {MatButtonModule} from '@angular/material/button';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatInputModule} from '@angular/material/input';
