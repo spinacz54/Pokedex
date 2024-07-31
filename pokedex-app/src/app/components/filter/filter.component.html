@@ -1,0 +1,25 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title> Filters </mat-panel-title>
+    </mat-expansion-panel-header>
+    <form class="form" [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Property</mat-label>
+        <mat-select formControlName="property">
+          @for (option of selectOptions; track option) {
+            <mat-option [value]="option">{{option}}</mat-option>
+          }
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Value</mat-label>
+        <input matInput formControlName="value">
+      </mat-form-field>
+    </form>
+      <div class="buttons">
+        <button mat-stroked-button (click)="onClearClick()">Clear</button>
+        <button mat-flat-button (click)="onFilterClick()" [disabled]="!form.valid">Filter</button>
+      </div>
+  </mat-expansion-panel>
+</mat-accordion>

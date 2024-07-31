@@ -1,2 +1,8 @@
-Hello
-<list-component [listItems]="pokemonsList"></list-component>
+<div class="app">
+  <div class="app-header" >POKEDEX</div>
+  <div class="list">
+<!--    <list-component [listItems]="(this.pokemons$ | async)!" (filterClick)="onFilterClick($event)"></list-component>-->
+    <router-outlet></router-outlet>
+  </div>
+
+</div>

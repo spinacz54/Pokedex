@@ -1,0 +1,39 @@
+
+  <form class="details" [formGroup]="form">
+    <img [src]="pokemon?.images?.large" class="details__image">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>ID</mat-label>
+      <input matInput formControlName="id">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>HP</mat-label>
+      <input matInput formControlName="hp">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Evolves from</mat-label>
+      <input matInput formControlName="evolvesFrom">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select [formControl]="getTypeControl()">
+        @for (option of ['a','b']; track option) {
+          <mat-option [value]="option">{{option}}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="supertype">
+        <!--        @for (option of selectOptions; track option) {-->
+        <!--          <mat-option [value]="option">{{option}}</mat-option>-->
+        <!--        }-->
+      </mat-select>
+    </mat-form-field>
+    <button mat-stroked-button>Clear</button>
+    <button mat-flat-button>Filter</button>
+  </form>
+

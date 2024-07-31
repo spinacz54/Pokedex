@@ -1,0 +1,21 @@
+.details {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-template-areas:
+    "image image header header"
+    "image image . sidebar"
+    "image image . sidebar"
+    "image image footer footer";
+
+  &__image {
+    max-width: 100%;
+    grid-area: image;
+  }
+
+  .mat-mdc-form-field {
+    display: block;
+  }
+
+}
