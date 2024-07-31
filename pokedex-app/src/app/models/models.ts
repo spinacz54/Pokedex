@@ -6,6 +6,7 @@ export type Card = {
   images: Image;
   supertype: string;
   types: string[];
+  subtypes: string[];
 } | undefined
 
 export type Image = {
@@ -33,6 +34,10 @@ export type PokemonQuery = {
   property: string;
   value: string;
 }
+
+export type Types = string[] | undefined
+export type Subtypes = string[] | undefined
+export type Supertypes = string[] | undefined
 
 export enum FilteringProperties{
   TYPE = 'Type',

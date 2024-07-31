@@ -18,7 +18,6 @@ export class ListComponent implements OnInit{
   constructor(private router: Router, private actionFacadeService: ActionFacadeService, private viewFacadeService: ViewFacadeService) {}
 
   public ngOnInit(): void {
-    console.log('init')
     this. pokemons$ = this.viewFacadeService.getPokemons$();
     this.actionFacadeService.loadPokemons();
   }

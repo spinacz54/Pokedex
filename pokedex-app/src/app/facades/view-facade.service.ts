@@ -17,4 +17,16 @@ export class ViewFacadeService {
   public getPokemon$(): Observable<Card> {
     return this.stateService.getPokemon$();
   }
+
+  public getTypes$(): Observable<string[] | undefined> {
+    return this.stateService.getTypes$();
+  }
+
+  public getSubtypes$(): Observable<string[] | undefined> {
+    return this.stateService.getSubtypes$();
+  }
+
+  public getSupertypes$(): Observable<string[] | undefined> {
+    return this.stateService.getSupertypes$();
+  }
 }

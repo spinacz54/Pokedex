@@ -20,15 +20,15 @@ export class DataProviderService {
     return this.http.get<any>(this.apiUrl + 'cards/' + id);
   }
 
-  public getTypes(): Observable<SimpleTypes> {
+  public getTypes$(): Observable<SimpleTypes> {
     return this.http.get<any>(this.apiUrl + 'types');
   }
 
-  public getSubtypes(): Observable<SimpleTypes> {
+  public getSubtypes$(): Observable<SimpleTypes> {
     return this.http.get<any>(this.apiUrl + 'subtypes');
   }
 
-  public getSupertypes(): Observable<SimpleTypes> {
+  public getSupertypes$(): Observable<SimpleTypes> {
     return this.http.get<any>(this.apiUrl + 'supertypes');
   }
 

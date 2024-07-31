@@ -5,7 +5,7 @@ import {
   AllCardsResponse,
   Card,
   PokemonListItem,
-  PokemonQuery,
+  PokemonQuery, SimpleTypes,
   SingleCardResponse
 } from "../models/models";
 
@@ -27,6 +27,24 @@ export class ActionFacadeService {
   public loadPokemon(id: string): void {
     this.dataProviderService.getPokemon$(id).subscribe((singleCardResponse: SingleCardResponse) => {
       this.stateService.setPokemon(singleCardResponse.data);
+    })
+  }
+
+  public loadTypes(): void {
+    this.dataProviderService.getTypes$().subscribe((types: SimpleTypes) => {
+      this.stateService.setTypes(types.data);
+    })
+  }
+
+  public loadSubtypes(): void {
+    this.dataProviderService.getSubtypes$().subscribe((subtypes: SimpleTypes) => {
+      this.stateService.setSubtypes(subtypes.data);
+    })
+  }
+
+  public loadSupertypes(): void {
+    this.dataProviderService.getSupertypes$().subscribe((supertypes: SimpleTypes) => {
+      this.stateService.setSupertypes(supertypes.data);
     })
   }
 }

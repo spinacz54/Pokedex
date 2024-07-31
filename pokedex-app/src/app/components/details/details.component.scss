@@ -1,21 +1,63 @@
 .details {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 1fr);
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 10px;
   grid-template-areas:
-    "image image header header"
-    "image image . sidebar"
-    "image image . sidebar"
-    "image image footer footer";
+    "image image name id"
+    "image image hp evolvesFrom"
+    "image image types subtypes"
+    "image image supertype ."
+    "image image button-back button-save";
+
+
+  .mat-mdc-form-field {
+    display: block;
+  }
 
   &__image {
     max-width: 100%;
     grid-area: image;
   }
 
-  .mat-mdc-form-field {
-    display: block;
+  &__button {
+    text-align: right;
+
+    &-back {
+      grid-area: button-back;
+    }
+
+    &-save {
+      grid-area: button-save;
+    }
+  }
+
+  #nameField {
+    grid-area: name;
+  }
+
+  #idField {
+    grid-area: id;
+  }
+
+  #hpField {
+    grid-area: hp;
+  }
+
+  #evolvesFromField {
+    grid-area: evolvesFrom;
+  }
+
+  .typesField {
+    grid-area: types;
+  }
+
+  .subtypesField {
+    grid-area: subtypes;
+  }
+
+  .supertypeField {
+    grid-area: supertype;
   }
 
 }

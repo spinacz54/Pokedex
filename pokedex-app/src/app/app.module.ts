@@ -14,6 +14,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinner } from '@angular/material/progress-spinner';
 import { FilterComponent } from './components/filter/filter.component';
 import {StateService} from "./services/state.service";
 import {ActionFacadeService} from "./facades/action-facade.service";
@@ -40,7 +41,8 @@ import { DetailsComponent } from './components/details/details.component';
     MatSelectModule,
     MatInputModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatProgressSpinner
   ],
   providers: [
     provideClientHydration(),
