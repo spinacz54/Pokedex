@@ -1,5 +1,5 @@
 
-  <form class="details" [formGroup]="form">
+  <form class="details" [formGroup]="form" *ngIf="!(isPokemonLoading$ | async)">
     <img [src]="pokemon?.images?.large" class="details__image" alt="image">
     <mat-form-field id="nameField">
       <mat-label>Name</mat-label>
@@ -57,4 +57,5 @@
     <div class="details__button details__button-save" *ngIf="isInEditMode" (click)="onSaveClick()"><button  mat-flat-button>Save</button></div>
     <div class="details__button details__button-save" *ngIf="!isInEditMode" (click)="onEditClick()"><button  mat-flat-button>Edit</button></div>
   </form>
+  <div class="spinner" *ngIf="isPokemonLoading$ | async"><mat-spinner></mat-spinner></div>
 

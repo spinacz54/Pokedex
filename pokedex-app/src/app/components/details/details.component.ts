@@ -4,7 +4,7 @@ import {ActionFacadeService} from "../../facades/action-facade.service";
 import {ViewFacadeService} from "../../facades/view-facade.service";
 import {Card, Subtypes, Supertypes, Types} from "../../models/models";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-details',
@@ -13,6 +13,7 @@ import {Subscription} from "rxjs";
 })
 export class DetailsComponent implements OnInit, OnDestroy{
   public pokemon: Card;
+  public isPokemonLoading$!: Observable<boolean>;
   public form: FormGroup;
   public types: Types;
   public subtypes: Subtypes;
@@ -69,6 +70,7 @@ export class DetailsComponent implements OnInit, OnDestroy{
       this.subtypes = subtypes}));
     this.subscriptions.push(this.viewFacadeService.getSupertypes$().subscribe((supertypes: Supertypes) => {
       this.supertypes = supertypes}));
+    this.isPokemonLoading$ = this.viewFacadeService.getIsPokemonLoading$();
 
   }
 

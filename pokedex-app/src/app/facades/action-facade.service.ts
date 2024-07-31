@@ -17,16 +17,20 @@ export class ActionFacadeService {
   constructor(private stateService: StateService, private dataProviderService: DataProviderService) { }
 
   public loadPokemons(query?: PokemonQuery): void {
+    this.stateService.setIsPokemonsListLoading(true);
     let pokemons: PokemonListItem[];
     this.dataProviderService.getPokemons$(query).subscribe((cards: AllCardsResponse) => {
       pokemons = cards.data.map((card: Card) => ({id: card!.id, name: card!.name}))
       this.stateService.setPokemons(pokemons);
+      this.stateService.setIsPokemonsListLoading(false);
     })
   }
 
   public loadPokemon(id: string): void {
+    this.stateService.setIsPokemonLoading(true);
     this.dataProviderService.getPokemon$(id).subscribe((singleCardResponse: SingleCardResponse) => {
       this.stateService.setPokemon(singleCardResponse.data);
+      this.stateService.setIsPokemonLoading(false);
     })
   }
 

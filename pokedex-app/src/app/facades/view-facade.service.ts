@@ -29,4 +29,12 @@ export class ViewFacadeService {
   public getSupertypes$(): Observable<string[] | undefined> {
     return this.stateService.getSupertypes$();
   }
+
+  public getIsPokemonsListLoading$(): Observable<boolean> {
+    return this.stateService.getIsPokemonsListLoading();
+  }
+
+  public getIsPokemonLoading$(): Observable<boolean> {
+    return this.stateService.getIsPokemonLoading();
+  }
 }

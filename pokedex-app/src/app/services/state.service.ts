@@ -56,13 +56,22 @@ export class StateService {
     return this.supertypes$.asObservable();
   }
 
-  public setIsPokemonListLoading(isLoading: boolean): void {
+  public setIsPokemonsListLoading(isLoading: boolean): void {
 
     this.isPokemonsListLoading$.next(isLoading);
   }
 
-  public getIsPokemonListLoading(): Observable<boolean> {
+  public getIsPokemonsListLoading(): Observable<boolean> {
     return this.isPokemonsListLoading$.asObservable();
+  }
+
+  public setIsPokemonLoading(isLoading: boolean): void {
+
+    this.isPokemonLoading$.next(isLoading);
+  }
+
+  public getIsPokemonLoading(): Observable<boolean> {
+    return this.isPokemonLoading$.asObservable();
   }
 
 

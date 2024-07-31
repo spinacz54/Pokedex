@@ -59,5 +59,10 @@
   .supertypeField {
     grid-area: supertype;
   }
+}
 
+.spinner {
+  display: flex;
+  justify-content: center;
+  padding-top: 150px;
 }

@@ -1,5 +1,4 @@
 .list {
-
   &__filter {
     padding-bottom: 10px;
   }
@@ -8,5 +7,12 @@
     display: flex;
     justify-content: center;
     padding-top: 50px;
+  }
+
+  &__prompt {
+    color: white;
+    text-align: center;
+    padding: 15px;
+    background-color: #191c1c;
   }
 }
