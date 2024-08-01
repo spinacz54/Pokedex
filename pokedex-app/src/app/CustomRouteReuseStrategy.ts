@@ -1,7 +1,6 @@
 import {ActivatedRouteSnapshot, DetachedRouteHandle, RouteReuseStrategy,} from '@angular/router';
 
 export class CustomRouteReuseStrategy implements RouteReuseStrategy {
-  private routeStore = new Map<string, DetachedRouteHandle>();
 
   shouldDetach(route: ActivatedRouteSnapshot): boolean {
     return true;
