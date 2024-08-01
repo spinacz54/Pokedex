@@ -117,7 +117,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
   }
 
   public onSimilarPokemonClick(id: string): void {
-    console.log('click');
     this.router.navigate(['/pokemon', id]);
   }
 
