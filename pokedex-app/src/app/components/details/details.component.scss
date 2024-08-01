@@ -65,5 +65,28 @@
     display: flex;
     justify-content: center;
     padding-top: 150px;
+    min-height: 420px;
+  }
+
+  &__similar {
+    color: white;
+    display: flex;
+    flex-direction: column;
+
+    &_link {
+      cursor: pointer;
+
+      &:hover {
+        color: aqua;
+      }
+    }
+
+    &_spinner {
+      height: 50px;
+
+      .mat-mdc-progress-spinner {
+        height: 50px;
+      }
+    }
   }
 }

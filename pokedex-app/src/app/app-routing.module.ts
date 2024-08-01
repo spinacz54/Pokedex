@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {ListComponent} from "./components/list/list.component";
 import {DetailsComponent} from "./components/details/details.component";
+import {ListComponent} from "./components/list/list.component";
 
 const routes: Routes = [
   {path: '', redirectTo: '/list', pathMatch: 'full'},
@@ -10,7 +10,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {onSameUrlNavigation: 'reload'})],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

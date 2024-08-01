@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Observable, Subscription} from "rxjs";
+import {Observable, skip, Subscription} from "rxjs";
 import {ActionFacadeService} from "../../facades/action-facade.service";
 import {ViewFacadeService} from "../../facades/view-facade.service";
-import {Card, Subtypes, Supertypes, Types} from "../../models/models";
+import {Card, FilteringProperties, PokemonListItem, Subtypes, Supertypes, Types} from "../../models/models";
 
 @Component({
   selector: 'app-details',
@@ -13,7 +13,9 @@ import {Card, Subtypes, Supertypes, Types} from "../../models/models";
 })
 export class DetailsComponent implements OnInit, OnDestroy {
   public pokemon: Card;
-  public isPokemonLoading$!: Observable<boolean>;
+  public similarPokemons: PokemonListItem[] = [];
+  public isPokemonLoading: boolean = true;
+  public isSimilarPokemonsListLoading$!: Observable<boolean>;
   public form: FormGroup;
   public types: Types;
   public subtypes: Subtypes;
@@ -85,6 +87,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
   private subscribeToData(): void {
     this.subscriptions.push(this.viewFacadeService.getPokemon$().subscribe((pokemon: Card) => {
       this.pokemon = pokemon;
+      this.subscriptions.push(this.viewFacadeService.getPokemons$().pipe(skip(1)).subscribe((pokemons: PokemonListItem[]) => {
+        this.similarPokemons = pokemons.filter((pokemon: PokemonListItem) => pokemon.id != this.pokemon?.id).slice(0, 3);
+      }));
+      this.actionFacadeService.loadPokemons({property: FilteringProperties.TYPE, value: pokemon!.types[0]})
       this.updateForm(pokemon)
     }));
     this.subscriptions.push(this.viewFacadeService.getTypes$().subscribe((types: Types) => {
@@ -96,7 +102,10 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.subscriptions.push(this.viewFacadeService.getSupertypes$().subscribe((supertypes: Supertypes) => {
       this.supertypes = supertypes
     }));
-    this.isPokemonLoading$ = this.viewFacadeService.getIsPokemonLoading$();
+    this.subscriptions.push(this.viewFacadeService.getIsPokemonLoading$().subscribe((isLoading: boolean) => {
+      this.isPokemonLoading = isLoading;
+    }));
+    this.isSimilarPokemonsListLoading$ = this.viewFacadeService.getIsPokemonsListLoading$();
 
   }
 
@@ -105,6 +114,11 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.actionFacadeService.loadTypes();
     this.actionFacadeService.loadSubtypes();
     this.actionFacadeService.loadSupertypes();
+  }
+
+  public onSimilarPokemonClick(id: string): void {
+    console.log('click');
+    this.router.navigate(['/pokemon', id]);
   }
 
 }
