@@ -37,6 +37,25 @@ export class DetailsComponent implements OnInit, OnDestroy {
     id && this.loadData(id);
   }
 
+  public onSaveClick(): void {
+    this.isInEditMode = false;
+    this.updateForm()
+    /* HERE WOULD GO REQUEST TO API TO UPDATE POKEMON DATA IF THERE WOULD BE SUCH ENDPOINT*/
+  }
+
+  public onEditClick(): void {
+    this.isInEditMode = true;
+    this.updateForm()
+  }
+
+  public onBackClick(): void {
+    this.router.navigate(['/list']);
+  }
+
+  public ngOnDestroy() {
+    this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe())
+  }
+
   private createNewForm(): FormGroup {
     return new FormGroup({
       name: new FormControl('', [Validators.required]),
@@ -86,24 +105,6 @@ export class DetailsComponent implements OnInit, OnDestroy {
     this.actionFacadeService.loadTypes();
     this.actionFacadeService.loadSubtypes();
     this.actionFacadeService.loadSupertypes();
-  }
-
-  public onSaveClick(): void {
-    this.isInEditMode = false;
-    this.updateForm()
-  }
-
-  public onEditClick(): void {
-    this.isInEditMode = true;
-    this.updateForm()
-  }
-
-  public onBackClick(): void {
-    this.router.navigate(['/list']);
-  }
-
-  public ngOnDestroy() {
-    this.subscriptions.forEach((subscription: Subscription) => subscription.unsubscribe())
   }
 
 }

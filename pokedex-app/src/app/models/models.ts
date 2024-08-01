@@ -40,7 +40,7 @@ export type Subtypes = string[] | undefined
 export type Supertypes = string[] | undefined
 
 export enum FilteringProperties {
-  TYPE = 'Type',
-  SUBTYPE = 'Subtype',
+  TYPE = 'Types',
+  SUBTYPE = 'Subtypes',
   SUPERTYPE = 'Supertype'
 }

@@ -2,7 +2,8 @@
   <div class="list__filter">
     <filter-component (filterClick)="onFilterClick($event)" (clearClick)="onClearClick()"></filter-component>
   </div>
-  <table mat-table [dataSource]="(pokemons$ | async)!" class="mat-elevation-z8">
+  <table mat-table [dataSource]="(pokemons$ | async)!" *ngIf="!(isPokemonsListLoading$ | async)"
+         class="mat-elevation-z8">
     <ng-container matColumnDef="id">
       <th mat-header-cell *matHeaderCellDef>ID</th>
       <td mat-cell *matCellDef="let element"> {{ element.id }}</td>
